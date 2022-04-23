@@ -5409,6 +5409,19 @@ ACME_TARGET_PACKAGE := $(PRODUCT_OUT)/$(ACME_VERSION).zip
 acme: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(ACME_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(ACME_TARGET_PACKAGE) > $(ACME_TARGET_PACKAGE).md5sum
+	echo -e "======================================================================"
+	echo -e "                                                                      "
+	echo -e "   █████████                                        █████  █████ █████"
+	echo -e "  ███░░░░░███                                      ░░███  ░░███ ░░███ "
+	echo -e " ░███    ░███   ██████  █████████████    ██████     ░███   ░███  ░███ "
+	echo -e " ░███████████  ███░░███░░███░░███░░███  ███░░███    ░███   ░███  ░███ "
+	echo -e " ░███░░░░░███ ░███ ░░░  ░███ ░███ ░███ ░███████     ░███   ░███  ░███ "
+	echo -e " ░███    ░███ ░███  ███ ░███ ░███ ░███ ░███░░░      ░███   ░███  ░███ "
+	echo -e " █████   █████░░██████  █████░███ █████░░██████     ░░████████   █████"
+	echo -e "░░░░░   ░░░░░  ░░░░░░  ░░░░░ ░░░ ░░░░░  ░░░░░░       ░░░░░░░░   ░░░░░ "
+	echo -e "                                                                      "
+	echo -e "                           Hands make acme!                           "
+	echo -e "======================================================================"
 	@echo "**Package complete"**: $(ACME_TARGET_PACKAGE)"
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
