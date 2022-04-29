@@ -147,12 +147,12 @@ function check_product()
         echo "Couldn't locate the top of the tree.  Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^acme_") ; then
-        ACME_BUILD=$(echo -n $1 | sed -e 's/^acme_//g')
+    if (echo -n $1 | grep -q -e "^csc_") ; then
+        CSC_BUILD=$(echo -n $1 | sed -e 's/^csc_//g')
     else
-        ACME_BUILD=
+        CSC_BUILD=
     fi
-    export ACME_BUILD
+    export CSC_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
@@ -1871,5 +1871,5 @@ export ANDROID_BUILD_TOP=$(gettop)
 
 function repopick() {
     T=$(gettop)
-    $T/vendor/acme/build/tools/repopick.py $@
+    $T/vendor/csc/build/tools/repopick.py $@
 }

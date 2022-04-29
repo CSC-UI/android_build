@@ -317,7 +317,7 @@ FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
 -include vendor/extra/BoardConfigExtra.mk
 ifneq ($(ACME_BUILD),)
-include vendor/acme/config/BoardConfigAcme.mk
+include vendor/csc/config/BoardConfigAcme.mk
 endif
 
 # The build system exposes several variables for where to find the kernel

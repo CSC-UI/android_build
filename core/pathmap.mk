@@ -93,4 +93,4 @@ FRAMEWORKS_BASE_SUBDIRS := \
 FRAMEWORKS_BASE_JAVA_SRC_DIRS := \
 	$(addprefix frameworks/base/,$(FRAMEWORKS_BASE_SUBDIRS))
 
--include vendor/acme/build/core/pathmap.mk
+-include vendor/csc/build/core/pathmap.mk
