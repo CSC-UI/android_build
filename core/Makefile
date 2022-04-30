@@ -5403,26 +5403,26 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(OTA_FROM_TARGET_
 .PHONY: otapackage
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 
-ACME_TARGET_PACKAGE := $(PRODUCT_OUT)/$(ACME_VERSION).zip
+CSC_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CSC_VERSION).zip
 
-.PHONY: acme
-acme: otapackage
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(ACME_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(ACME_TARGET_PACKAGE) > $(ACME_TARGET_PACKAGE).md5sum
-	echo -e "======================================================================"
-	echo -e "                                                                      "
-	echo -e "   █████████                                        █████  █████ █████"
-	echo -e "  ███░░░░░███                                      ░░███  ░░███ ░░███ "
-	echo -e " ░███    ░███   ██████  █████████████    ██████     ░███   ░███  ░███ "
-	echo -e " ░███████████  ███░░███░░███░░███░░███  ███░░███    ░███   ░███  ░███ "
-	echo -e " ░███░░░░░███ ░███ ░░░  ░███ ░███ ░███ ░███████     ░███   ░███  ░███ "
-	echo -e " ░███    ░███ ░███  ███ ░███ ░███ ░███ ░███░░░      ░███   ░███  ░███ "
-	echo -e " █████   █████░░██████  █████░███ █████░░██████     ░░████████   █████"
-	echo -e "░░░░░   ░░░░░  ░░░░░░  ░░░░░ ░░░ ░░░░░  ░░░░░░       ░░░░░░░░   ░░░░░ "
-	echo -e "                                                                      "
-	echo -e "                           Hands make acme!                           "
-	echo -e "======================================================================"
-	@echo "**Package complete"**: $(ACME_TARGET_PACKAGE)"
+.PHONY: csc
+csc: otapackage
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CSC_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(CSC_TARGET_PACKAGE) > $(CSC_TARGET_PACKAGE).md5sum
+	echo -e "============================================================"
+	echo -e "                                                            "
+	echo -e "   █████████   █████████    █████████     █████  █████ █████"
+	echo -e "  ███░░░░░███ ███░░░░░███  ███░░░░░███   ░░███  ░░███ ░░███ "
+	echo -e " ███     ░░░ ░███    ░░░  ███     ░░░     ░███   ░███  ░███ "
+	echo -e "░███         ░░█████████ ░███             ░███   ░███  ░███ "
+	echo -e "░███          ░░░░░░░░███░███             ░███   ░███  ░███ "
+	echo -e "░░███     ███ ███    ░███░░███     ███    ░███   ░███  ░███ "
+	echo -e " ░░█████████ ░░█████████  ░░█████████     ░░████████   █████"
+	echo -e "  ░░░░░░░░░   ░░░░░░░░░    ░░░░░░░░░       ░░░░░░░░   ░░░░░ "
+	echo -e "                                                            "
+	echo -e "                     叉烧肠~我们都爱吃叉烧肠~                   "
+	echo -e "============================================================"
+	@echo "**Package complete"**: $(CSC_TARGET_PACKAGE)"
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
 name := $(product_name)-ota-retrofit-$(FILE_NAME_TAG)

@@ -254,7 +254,7 @@ SOONG_CONFIG_NAMESPACES :=
 # The add_soong_config_namespace function adds a namespace and initializes it
 # to be empty.
 # $1 is the namespace.
-# Ex: $(call add_soong_config_namespace,acme)
+# Ex: $(call add_soong_config_namespace,csc)
 
 define add_soong_config_namespace
 $(eval SOONG_CONFIG_NAMESPACES += $1) \
@@ -265,7 +265,7 @@ endef
 # SOONG_CONFIG_*. The variables and their values are then available to a
 # soong_config_module_type in an Android.bp file.
 # $1 is the namespace. $2 is the list of variables.
-# Ex: $(call add_soong_config_var,acme,COOL_FEATURE_A COOL_FEATURE_B)
+# Ex: $(call add_soong_config_var,csc,COOL_FEATURE_A COOL_FEATURE_B)
 define add_soong_config_var
 $(eval SOONG_CONFIG_$1 += $2) \
 $(foreach v,$2,$(eval SOONG_CONFIG_$1_$v := $($v)))
@@ -274,7 +274,7 @@ endef
 # The add_soong_config_var_value function defines a make variable and also adds
 # the variable to SOONG_CONFIG_*.
 # $1 is the namespace. $2 is the variable name. $3 is the variable value.
-# Ex: $(call add_soong_config_var_value,acme,COOL_FEATURE,true)
+# Ex: $(call add_soong_config_var_value,csc,COOL_FEATURE,true)
 
 define add_soong_config_var_value
 $(eval $2 := $3) \
@@ -316,8 +316,8 @@ include $(BUILD_SYSTEM)/envsetup.mk
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
 -include vendor/extra/BoardConfigExtra.mk
-ifneq ($(ACME_BUILD),)
-include vendor/csc/config/BoardConfigAcme.mk
+ifneq ($(CSC_BUILD),)
+include vendor/csc/config/BoardConfigCsc.mk
 endif
 
 # The build system exposes several variables for where to find the kernel
@@ -1170,11 +1170,11 @@ dont_bother_goals := out \
 # consistency with those defined in BoardConfig.mk files.
 include $(BUILD_SYSTEM)/android_soong_config_vars.mk
 
-ifneq ($(ACME_BUILD),)
-ifneq ($(wildcard device/acme/sepolicy/common/sepolicy.mk),)
+ifneq ($(CSC_BUILD),)
+ifneq ($(wildcard device/csc/sepolicy/common/sepolicy.mk),)
 ## We need to be sure the global selinux policies are included
 ## last, to avoid accidental resetting by device configs
-$(eval include device/acme/sepolicy/common/sepolicy.mk)
+$(eval include device/csc/sepolicy/common/sepolicy.mk)
 endif
 endif
 
